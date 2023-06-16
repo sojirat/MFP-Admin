@@ -54,7 +54,7 @@ const TablesWidget9: React.FC<Props> = ({className}) => {
                     />
                   </div>
                 </th>
-                <th className='min-w-150px'>Authors</th>
+                <th className='min-w-150px'>Authors เทสๆ</th>
                 <th className='min-w-140px'>Company</th>
                 <th className='min-w-120px'>Progress</th>
                 <th className='min-w-100px text-end'>Actions</th>

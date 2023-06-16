@@ -1,14 +1,13 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import {useState} from 'react'
-import {useDispatch} from 'react-redux'
-import * as Yup from 'yup'
-import clsx from 'clsx'
-import {Link} from 'react-router-dom'
-import {useFormik} from 'formik'
-import * as auth from '../redux/AuthRedux'
-import {login} from '../redux/AuthCRUD'
-import {toAbsoluteUrl} from '../../../../_metronic/helpers'
-
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import * as Yup from 'yup';
+import clsx from 'clsx';
+import { Link } from 'react-router-dom';
+import { useFormik } from 'formik';
+import * as auth from '../redux/AuthRedux';
+// import { toAbsoluteUrl } from '../../../../_metronic/helpers';
+const API_URL = process.env.REACT_APP_API_URL
 const loginSchema = Yup.object().shape({
   email: Yup.string()
     .email('Wrong email format')
@@ -19,111 +18,89 @@ const loginSchema = Yup.object().shape({
     .min(3, 'Minimum 3 symbols')
     .max(50, 'Maximum 50 symbols')
     .required('Password is required'),
-})
+});
 
 const initialValues = {
-  email: 'admin@demo.com',
-  password: 'demo',
-}
-
-/*
-  Formik+YUP+Typescript:
-  https://jaredpalmer.com/formik/docs/tutorial#getfieldprops
-  https://medium.com/@maurice.de.beijer/yup-validation-and-typescript-and-formik-6c342578a20e
-*/
+  email: '',
+  password: '',
+};
 
 export function Login() {
-  const [loading, setLoading] = useState(false)
-  const dispatch = useDispatch()
+  const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues,
     validationSchema: loginSchema,
-    onSubmit: (values, {setStatus, setSubmitting}) => {
-      setLoading(true)
-      setTimeout(() => {
-        login(values.email, values.password)
-          .then(({data: {api_token}}) => {
-            setLoading(false)
-            dispatch(auth.actions.login(api_token))
-          })
-          .catch(() => {
-            setLoading(false)
-            setSubmitting(false)
-            setStatus('The login detail is incorrect')
-          })
-      }, 1000)
+    onSubmit: async (values, { setStatus, setSubmitting }) => {
+      setLoading(true);
+      try {
+        const response = await axios.post(`${API_URL}/login`, values);
+        setLoading(false);
+        dispatch(auth.actions.login(response.data.bearer_token));
+        setShowModal(true);
+      } catch (error) {
+        setLoading(false);
+        setSubmitting(false);
+        setErrorMessage('The login detail is incorrect');
+      }
     },
-  })
+  });
 
   return (
     <form
-      className='form w-100'
+      className="form w-100"
       onSubmit={formik.handleSubmit}
       noValidate
-      id='kt_login_signin_form'
+      id="kt_login_signin_form"
     >
       {/* begin::Heading */}
-      <div className='text-center mb-10'>
-        <h1 className='text-dark mb-3'>Sign In to Metronic</h1>
-        <div className='text-gray-400 fw-bold fs-4'>
+      <div className="text-center mb-10">
+        <h1 className="text-dark mb-3">Sign In to Metronic</h1>
+        <div className="text-gray-400 fw-bold fs-4">
           New Here?{' '}
-          <Link to='/auth/registration' className='link-primary fw-bolder'>
+          <Link to="/auth/registration" className="link-primary fw-bolder">
             Create an Account
           </Link>
         </div>
       </div>
       {/* begin::Heading */}
 
-      {formik.status ? (
-        <div className='mb-lg-15 alert alert-danger'>
-          <div className='alert-text font-weight-bold'>{formik.status}</div>
-        </div>
-      ) : (
-        <div className='mb-10 bg-light-info p-8 rounded'>
-          <div className='text-info'>
-            Use account <strong>admin@demo.com</strong> and password <strong>demo</strong> to
-            continue.
-          </div>
-        </div>
-      )}
-
       {/* begin::Form group */}
-      <div className='fv-row mb-10'>
-        <label className='form-label fs-6 fw-bolder text-dark'>Email</label>
+      <div className="fv-row mb-10">
+        <label className="form-label fs-6 fw-bolder text-dark">Email</label>
         <input
-          placeholder='Email'
+          placeholder="Email"
           {...formik.getFieldProps('email')}
-          className={clsx(
-            'form-control form-control-lg form-control-solid',
-            {'is-invalid': formik.touched.email && formik.errors.email},
-            {
-              'is-valid': formik.touched.email && !formik.errors.email,
-            }
-          )}
-          type='email'
-          name='email'
-          autoComplete='off'
+          className={clsx('form-control form-control-lg form-control-solid', {
+            'is-invalid': formik.touched.email && formik.errors.email,
+            'is-valid': formik.touched.email && !formik.errors.email,
+          })}
+          type="email"
+          name="email"
+          autoComplete="off"
         />
         {formik.touched.email && formik.errors.email && (
-          <div className='fv-plugins-message-container'>
-            <span role='alert'>{formik.errors.email}</span>
+          <div className="fv-plugins-message-container">
+            <span role="alert">{formik.errors.email}</span>
           </div>
         )}
       </div>
       {/* end::Form group */}
 
       {/* begin::Form group */}
-      <div className='fv-row mb-10'>
-        <div className='d-flex justify-content-between mt-n5'>
-          <div className='d-flex flex-stack mb-2'>
+      <div className="fv-row mb-10">
+        <div className="d-flex justify-content-between mt-n5">
+          <div className="d-flex flex-stack mb-2">
             {/* begin::Label */}
-            <label className='form-label fw-bolder text-dark fs-6 mb-0'>Password</label>
+            <label className="form-label fw-bolder text-dark fs-6 mb-0">Password</label>
             {/* end::Label */}
             {/* begin::Link */}
             <Link
-              to='/auth/forgot-password'
-              className='link-primary fs-6 fw-bolder'
-              style={{marginLeft: '5px'}}
+              to="/auth/forgot-password"
+              className="link-primary fs-6 fw-bolder"
+              style={{ marginLeft: '5px' }}
             >
               Forgot Password ?
             </Link>
@@ -131,23 +108,19 @@ export function Login() {
           </div>
         </div>
         <input
-          type='password'
-          autoComplete='off'
+          type="password"
+          autoComplete="off"
+          placeholder="Password"
           {...formik.getFieldProps('password')}
-          className={clsx(
-            'form-control form-control-lg form-control-solid',
-            {
-              'is-invalid': formik.touched.password && formik.errors.password,
-            },
-            {
-              'is-valid': formik.touched.password && !formik.errors.password,
-            }
-          )}
+          className={clsx('form-control form-control-lg form-control-solid', {
+            'is-invalid': formik.touched.password && formik.errors.password,
+            'is-valid': formik.touched.password && !formik.errors.password,
+          })}
         />
         {formik.touched.password && formik.errors.password && (
-          <div className='fv-plugins-message-container'>
-            <div className='fv-help-block'>
-              <span role='alert'>{formik.errors.password}</span>
+          <div className="fv-plugins-message-container">
+            <div className="fv-help-block">
+              <span role="alert">{formik.errors.password}</span>
             </div>
           </div>
         )}
@@ -155,60 +128,50 @@ export function Login() {
       {/* end::Form group */}
 
       {/* begin::Action */}
-      <div className='text-center'>
+      <div className="text-center">
         <button
-          type='submit'
-          id='kt_sign_in_submit'
-          className='btn btn-lg btn-primary w-100 mb-5'
+          type="submit"
+          id="kt_sign_in_submit"
+          className="btn btn-lg btn-primary w-100 mb-5"
           disabled={formik.isSubmitting || !formik.isValid}
         >
-          {!loading && <span className='indicator-label'>Continue</span>}
+          {!loading && <span className="indicator-label">Continue</span>}
           {loading && (
-            <span className='indicator-progress' style={{display: 'block'}}>
+            <span className="indicator-progress" style={{ display: 'block' }}>
               Please wait...
-              <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
+              <span className="spinner-border spinner-border-sm align-middle ms-2"></span>
             </span>
           )}
         </button>
-
-        {/* begin::Separator */}
-        <div className='text-center text-muted text-uppercase fw-bolder mb-5'>or</div>
-        {/* end::Separator */}
-
-        {/* begin::Google link */}
-        <a href='#' className='btn btn-flex flex-center btn-light btn-lg w-100 mb-5'>
-          <img
-            alt='Logo'
-            src={toAbsoluteUrl('/media/svg/brand-logos/google-icon.svg')}
-            className='h-20px me-3'
-          />
-          Continue with Google
-        </a>
-        {/* end::Google link */}
-
-        {/* begin::Google link */}
-        <a href='#' className='btn btn-flex flex-center btn-light btn-lg w-100 mb-5'>
-          <img
-            alt='Logo'
-            src={toAbsoluteUrl('/media/svg/brand-logos/facebook-4.svg')}
-            className='h-20px me-3'
-          />
-          Continue with Facebook
-        </a>
-        {/* end::Google link */}
-
-        {/* begin::Google link */}
-        <a href='#' className='btn btn-flex flex-center btn-light btn-lg w-100'>
-          <img
-            alt='Logo'
-            src={toAbsoluteUrl('/media/svg/brand-logos/apple-black.svg')}
-            className='h-20px me-3'
-          />
-          Continue with Apple
-        </a>
-        {/* end::Google link */}
       </div>
       {/* end::Action */}
+
+      {/* Modal */}
+      {showModal && (
+        <div className="modal fade show" tabIndex={-1} role="dialog" style={{ display: 'block' }}>
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Success</h5>
+                <button type="button" className="btn-close" onClick={() => setShowModal(false)}></button>
+              </div>
+              <div className="modal-body">
+                <p>Login successful!</p>
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-primary" onClick={() => setShowModal(false)}>Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Error Message */}
+      {errorMessage && (
+        <div className="alert alert-danger" role="alert">
+          {errorMessage}
+        </div>
+      )}
     </form>
-  )
+  );
 }

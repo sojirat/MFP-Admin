@@ -83,7 +83,7 @@ const HelpDrawer = () => {
                   <div className="d-flex flex-column me-2 me-lg-5">
                     {/* begin::Title */}
                     <a
-                        href="https://preview.keenthemes.com/metronic8/react/demo1-docs/docs/quick-start"
+                        href="http://127.0.0.1:8000/api/react/demo1-docs/docs/quick-start"
                         className="text-dark text-hover-primary fw-bolder fs-6 fs-lg-4 mb-1"
                     >Documentation &amp; Videos</a
                     >
@@ -116,7 +116,7 @@ const HelpDrawer = () => {
                   <div className="d-flex flex-column me-2 me-lg-5">
                     {/* begin::Title */}
                     <a
-                        href="https://preview.keenthemes.com/metronic8/react/demo1-docs/docs/utilities"
+                        href="http://127.0.0.1:8000/api/react/demo1-docs/docs/utilities"
                         className="text-dark text-hover-primary fw-bolder fs-6 fs-lg-4 mb-1"
                     >Plugins &amp; Components</a
                     >
@@ -181,7 +181,7 @@ const HelpDrawer = () => {
                   <div className="d-flex flex-column me-2 me-lg-5">
                     {/* begin::Title */}
                     <a
-                        href="https://preview.keenthemes.com/metronic8/react/demo1-docs/docs/changelog"
+                        href="http://127.0.0.1:8000/api/react/demo1-docs/docs/changelog"
                         className="text-dark text-hover-primary fw-bolder fs-6 fs-lg-4 mb-1"
                     >What's New</a
                     >

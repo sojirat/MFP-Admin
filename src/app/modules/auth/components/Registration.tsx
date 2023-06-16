@@ -56,10 +56,10 @@ export function Registration() {
       setLoading(true)
       setTimeout(() => {
         register(values.email, values.firstname, values.lastname, values.password, values.changepassword)
-          .then(({data: {api_token}}) => {
+          .then(({data: {bearer_token}}) => {
             setLoading(false)
-            console.log(api_token);
-            dispatch(auth.actions.register(api_token))
+            console.log(bearer_token);
+            dispatch(auth.actions.register(bearer_token))
           })
           .catch(() => {
             setLoading(false)

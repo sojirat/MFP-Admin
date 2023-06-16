@@ -1,9 +1,9 @@
 import axios from 'axios'
-import {UserModel} from '../models/UserModel'
+// import {UserModel} from '../models/UserModel'
 
 const API_URL = process.env.REACT_APP_API_URL
 
-export const GET_USER_BY_ACCESSTOKEN_URL = `${API_URL}/verify_token`
+export const GET_USER_BY_ACCESSTOKEN_URL = `${API_URL}/auth/user`
 export const LOGIN_URL = `${API_URL}/login`
 export const REGISTER_URL = `${API_URL}/register`
 export const REQUEST_PASSWORD_URL = `${API_URL}/forgot_password`
@@ -34,8 +34,17 @@ export function requestPassword(email: string) {
   })
 }
 
-export function getUserByToken(token:string) {
-  return axios.post<UserModel>(GET_USER_BY_ACCESSTOKEN_URL, {
-    api_token:token
-  })
+export function getUserByToken(token: string) {
+  return axios.get(`${API_URL}/auth/user`, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
 }
+
+
+// export function getUserByToken(token:string) {
+//   return axios.post<UserModel>(GET_USER_BY_ACCESSTOKEN_URL, {
+//     bearer_token:token
+//   })
+// }
