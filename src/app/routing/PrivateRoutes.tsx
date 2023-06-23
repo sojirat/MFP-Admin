@@ -1,10 +1,10 @@
 import {lazy, FC, Suspense} from 'react'
 import {Route, Routes, Navigate} from 'react-router-dom'
-import {MasterLayout} from '../../_metronic/layout/MasterLayout'
+import {MasterLayout} from '../../_mfp/layout/MasterLayout'
 import TopBarProgress from 'react-topbar-progress-indicator'
 import {DashboardWrapper} from '../pages/dashboard/DashboardWrapper'
 import {MenuTestPage} from '../pages/MenuTestPage'
-import {getCSSVariableValue} from "../../_metronic/assets/ts/_utils";
+import {getCSSVariableValue} from "../../_mfp/assets/ts/_utils";
 
 const PrivateRoutes = () => {
   const BuilderPageWrapper = lazy(() => import('../pages/layout-builder/BuilderPageWrapper'))

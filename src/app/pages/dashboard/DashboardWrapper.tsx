@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, {FC} from 'react'
 import {useIntl} from 'react-intl'
-import {PageTitle} from '../../../_metronic/layout/core'
+import {PageTitle} from '../../../_mfp/layout/core'
 import {
   MixedWidget2,
   MixedWidget10,
@@ -14,7 +14,7 @@ import {
   TablesWidget5,
   TablesWidget10,
   MixedWidget8,
-} from '../../../_metronic/partials/widgets'
+} from '../../../_mfp/partials/widgets'
 
 const DashboardPage: FC = () => (
   <>

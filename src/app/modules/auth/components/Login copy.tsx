@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom'
 import {useFormik} from 'formik'
 import * as auth from '../redux/AuthRedux'
 import {login} from '../redux/AuthCRUD'
-import {toAbsoluteUrl} from '../../../../_metronic/helpers'
+import {toAbsoluteUrl} from '../../../../_mfp/helpers'
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -64,7 +64,7 @@ export function Login() {
     >
       {/* begin::Heading */}
       <div className='text-center mb-10'>
-        <h1 className='text-dark mb-3'>Sign In to Metronic</h1>
+        <h1 className='text-dark mb-3'>Sign In to MFP</h1>
         <div className='text-gray-400 fw-bold fs-4'>
           New Here?{' '}
           <Link to='/auth/registration' className='link-primary fw-bolder'>

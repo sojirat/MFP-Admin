@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, {useState} from 'react'
-import {KTSVG} from '../../../../../../_metronic/helpers'
+import {KTSVG} from '../../../../../../_mfp/helpers'
 import * as Yup from 'yup'
 import {useFormik} from 'formik'
 import {IUpdatePassword, IUpdateEmail, updatePassword, updateEmail} from '../SettingsModel'

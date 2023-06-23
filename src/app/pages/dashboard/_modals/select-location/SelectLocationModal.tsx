@@ -1,6 +1,6 @@
 import React, {Dispatch, SetStateAction, useState, useEffect} from 'react'
 import {Modal} from 'react-bootstrap'
-import {KTSVG} from '../../../../../_metronic/helpers'
+import {KTSVG} from '../../../../../_mfp/helpers'
 
 type Props = {
   data: {location: string; setLocation: Dispatch<SetStateAction<string>>}

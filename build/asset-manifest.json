@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "/mfp/admin/static/css/main.ef66b7b1.chunk.css",
+    "main.js": "/mfp/admin/static/js/main.dd60c097.chunk.js",
+    "main.js.map": "/mfp/admin/static/js/main.dd60c097.chunk.js.map",
+    "runtime-main.js": "/mfp/admin/static/js/runtime-main.e056e655.js",
+    "runtime-main.js.map": "/mfp/admin/static/js/runtime-main.e056e655.js.map",
+    "static/css/2.a2f88f03.chunk.css": "/mfp/admin/static/css/2.a2f88f03.chunk.css",
+    "static/js/2.f58413d6.chunk.js": "/mfp/admin/static/js/2.f58413d6.chunk.js",
+    "static/js/2.f58413d6.chunk.js.map": "/mfp/admin/static/js/2.f58413d6.chunk.js.map",
+    "static/js/3.533a9c06.chunk.js": "/mfp/admin/static/js/3.533a9c06.chunk.js",
+    "static/js/3.533a9c06.chunk.js.map": "/mfp/admin/static/js/3.533a9c06.chunk.js.map",
+    "static/js/4.046a9cc2.chunk.js": "/mfp/admin/static/js/4.046a9cc2.chunk.js",
+    "static/js/4.046a9cc2.chunk.js.map": "/mfp/admin/static/js/4.046a9cc2.chunk.js.map",
+    "static/js/5.6435d186.chunk.js": "/mfp/admin/static/js/5.6435d186.chunk.js",
+    "static/js/5.6435d186.chunk.js.map": "/mfp/admin/static/js/5.6435d186.chunk.js.map",
+    "static/js/6.4e72be80.chunk.js": "/mfp/admin/static/js/6.4e72be80.chunk.js",
+    "static/js/6.4e72be80.chunk.js.map": "/mfp/admin/static/js/6.4e72be80.chunk.js.map",
+    "static/js/7.f44018ef.chunk.js": "/mfp/admin/static/js/7.f44018ef.chunk.js",
+    "static/js/7.f44018ef.chunk.js.map": "/mfp/admin/static/js/7.f44018ef.chunk.js.map",
+    "static/js/8.0a72f6e5.chunk.js": "/mfp/admin/static/js/8.0a72f6e5.chunk.js",
+    "static/js/8.0a72f6e5.chunk.js.map": "/mfp/admin/static/js/8.0a72f6e5.chunk.js.map",
+    "index.html": "/mfp/admin/index.html",
+    "static/css/2.a2f88f03.chunk.css.map": "/mfp/admin/static/css/2.a2f88f03.chunk.css.map",
+    "static/css/main.ef66b7b1.chunk.css.map": "/mfp/admin/static/css/main.ef66b7b1.chunk.css.map",
+    "static/js/2.f58413d6.chunk.js.LICENSE.txt": "/mfp/admin/static/js/2.f58413d6.chunk.js.LICENSE.txt",
+    "static/media/style.react.scss": "/mfp/admin/static/media/socicon.fa1cafd6.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e056e655.js",
+    "static/css/2.a2f88f03.chunk.css",
+    "static/js/2.f58413d6.chunk.js",
+    "static/css/main.ef66b7b1.chunk.css",
+    "static/js/main.dd60c097.chunk.js"
+  ]
+}

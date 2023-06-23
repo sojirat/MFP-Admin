@@ -4,7 +4,7 @@ import {Outlet, Route, Routes} from 'react-router-dom'
 import {Registration} from './components/Registration'
 import {ForgotPassword} from './components/ForgotPassword'
 import {Login} from './components/Login'
-import {toAbsoluteUrl} from '../../../_metronic/helpers'
+import {toAbsoluteUrl} from '../../../_mfp/helpers'
 
 const AuthLayout = () => {
   useEffect(() => {
@@ -25,7 +25,7 @@ const AuthLayout = () => {
       <div className='d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20'>
         {/* begin::Logo */}
         <a href='#' className='mb-12'>
-          <img alt='Logo' src={toAbsoluteUrl('/media/logos/logo-1.svg')} className='h-45px' />
+          <img alt='Logo' src={toAbsoluteUrl('/media/logos/logo-1.svg')} className='h-80px' />
         </a>
         {/* end::Logo */}
         {/* begin::Wrapper */}

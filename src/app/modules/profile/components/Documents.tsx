@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import {KTSVG} from '../../../../_metronic/helpers'
-import {Card4} from '../../../../_metronic/partials/content/cards/Card4'
+import {KTSVG} from '../../../../_mfp/helpers'
+import {Card4} from '../../../../_mfp/partials/content/cards/Card4'
 
 export function Documents() {
   return (
@@ -71,7 +71,7 @@ export function Documents() {
           />
         </div>
         <div className='col-12 col-sm-12 col-xl'>
-          <Card4 icon='/media/svg/files/ai.svg' title='Metronic Logo' description='5 days ago' />
+          <Card4 icon='/media/svg/files/ai.svg' title='MFP Logo' description='5 days ago' />
         </div>
         <div className='col-12 col-sm-12 col-xl'>
           <Card4 icon='/media/svg/files/sql.svg' title='Orders backup' description='1 week ago' />

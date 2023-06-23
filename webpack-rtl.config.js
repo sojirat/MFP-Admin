@@ -13,10 +13,10 @@ const RtlCssPlugin = require('rtlcss-webpack-plugin')
 
 // global variables
 const rootPath = path.resolve(__dirname)
-const distPath = rootPath + '/src/_metronic/assets'
+const distPath = rootPath + '/src/_mfp/assets'
 
 const entries = {
-  'css/style': './src/_metronic/assets/sass/style.scss',
+  'css/style': './src/_mfp/assets/sass/style.scss',
 }
 
 // remove older folders and files
